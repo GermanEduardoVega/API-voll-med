@@ -1,0 +1,27 @@
+package med.voll.api.medico;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import med.voll.api.direccion.DatosDireccion;
+import med.voll.api.direccion.Direccion;
+@Getter //metodos getter se generan en tiempo de compilacion
+@NoArgsConstructor  //constructor sin argumentos
+@AllArgsConstructor //constructor con todos los argumentos
+@EqualsAndHashCode(of = "id")   //identifica que campos son iguales es decir que objetos si el id es igual
+@Entity(name = "Medico")    //Para que se genere la tabla en la base de datos
+@Table(name = "medicos")
+public class Medico {       //clase Medico publica con los atributos
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //Para que se genere el id por defecto en la base de datos
+    private Long id;
+    private String nombre;
+    private String email;
+    private String documento;
+    @Enumerated(EnumType.STRING)    //Para guardar el enum en la base de datos
+    private Especialidad especialidad;
+    @Embedded   //Embedded para guardar el objeto en la base de datos
+    private Direccion direccion;
+}
