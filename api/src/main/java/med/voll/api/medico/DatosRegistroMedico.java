@@ -8,7 +8,7 @@ public record DatosRegistroMedico(
         String telefono,
         String documento,
         Especialidad especialidad,
-        DatosDireccion datosDireccion
+        DatosDireccion direccion
 
 
 ) { //record ya incluye los get & sets y constructores
