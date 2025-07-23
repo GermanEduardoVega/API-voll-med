@@ -19,6 +19,7 @@ public class Medico {       //clase Medico publica con los atributos
     private Long id;
     private String nombre;
     private String email;
+    private String telefono;
     private String documento;
     @Enumerated(EnumType.STRING)    //Para guardar el enum en la base de datos
     private Especialidad especialidad;
@@ -29,6 +30,7 @@ public class Medico {       //clase Medico publica con los atributos
         this.id = null;
         this.nombre = datos.nombre();
         this.email = datos.email();
+        this.telefono = datos.telefono();
         this.documento = datos.documento();
         this.especialidad = datos.especialidad();
         this.direccion = new Direccion(datos.direccion());
