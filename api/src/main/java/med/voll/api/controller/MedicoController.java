@@ -1,10 +1,7 @@
 package med.voll.api.controller;
 
 import jakarta.validation.Valid;
-import med.voll.api.medico.DatosListaMedico;
-import med.voll.api.medico.DatosRegistroMedico;
-import med.voll.api.medico.Medico;
-import med.voll.api.medico.MedicoRepository;
+import med.voll.api.medico.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,6 +25,13 @@ public class MedicoController {
     public Page<DatosListaMedico> listar(@PageableDefault(size = 10, sort = {"nombre"}) Pageable paginacion){     //nuestro repository que nos devuelve una lista de los medicos que hay en nuestra bd, convertimos esa lista de medicos en un stream para poder conseguir llamar un map,ese map convierte cada uno de los items a un DatosListaMedico que hicimos el constructor y luego reconvertimos esa lista en una lista propiamente dicha
         return repository.findAll(paginacion)
                 .map(DatosListaMedico::new);
+
+    }
+    @Transactional
+    @PutMapping
+    public void actualizar(@RequestBody @Valid DatosActualizacionMedico datos){
+        var medico = repository.getReferenceById(datos.id());
+        medico.actualizarInformaciones(datos);
 
     }
 }
