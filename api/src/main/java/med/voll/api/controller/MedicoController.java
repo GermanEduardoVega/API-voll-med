@@ -16,6 +16,7 @@ import java.util.List;
 public class MedicoController {
     @Autowired
     private MedicoRepository repository;
+
     @Transactional
     @PostMapping
     public void registrar(@RequestBody @Valid DatosRegistroMedico datos){
@@ -23,7 +24,7 @@ public class MedicoController {
     }
     @GetMapping //agregar un nuevo registro a la bd
     public Page<DatosListaMedico> listar(@PageableDefault(size = 10, sort = {"nombre"}) Pageable paginacion){     //nuestro repository que nos devuelve una lista de los medicos que hay en nuestra bd, convertimos esa lista de medicos en un stream para poder conseguir llamar un map,ese map convierte cada uno de los items a un DatosListaMedico que hicimos el constructor y luego reconvertimos esa lista en una lista propiamente dicha
-        return repository.findAll(paginacion)
+        return repository.findAllByActivoTrue(paginacion)
                 .map(DatosListaMedico::new);
 
     }
@@ -34,4 +35,10 @@ public class MedicoController {
         medico.actualizarInformaciones(datos);
 
     }
+    @Transactional
+    @DeleteMapping("/{id}")
+        public void eliminar(@PathVariable Long id){
+            var medico = repository.getReferenceById(id);
+            medico.eliminarInformacion();
+        }
 }

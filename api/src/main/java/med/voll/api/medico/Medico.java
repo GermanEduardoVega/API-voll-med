@@ -18,6 +18,7 @@ public class Medico {       //clase Medico publica con los atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //Para que se genere el id por defecto en la base de datos
     private Long id;
+    private Boolean activo;
     private String nombre;
     private String email;
     private String telefono;
@@ -29,6 +30,7 @@ public class Medico {       //clase Medico publica con los atributos
 
     public Medico(DatosRegistroMedico datos) {
         this.id = null;
+        this.activo = true;
         this.nombre = datos.nombre();
         this.email = datos.email();
         this.telefono = datos.telefono();
@@ -48,5 +50,9 @@ public class Medico {       //clase Medico publica con los atributos
             this.direccion.actualizarDireccion(datos.direccion());
 
         }
+    }
+
+    public void eliminarInformacion() {
+        this.activo = false;
     }
 }

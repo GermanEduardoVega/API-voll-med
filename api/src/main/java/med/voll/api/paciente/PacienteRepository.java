@@ -1,4 +1,4 @@
-package med.voll.api.medico;
+package med.voll.api.paciente;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface MedicoRepository extends JpaRepository<Medico, Long> {
-    Page<Medico> findAllByActivoTrue(Pageable paginacion);
+public interface PacienteRepository extends JpaRepository<Paciente, Long> {
+    Page<Paciente> findAllByActivoTrue(Pageable paginacion);
 }
