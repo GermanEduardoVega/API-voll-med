@@ -11,7 +11,7 @@ public class ApiApplication {
 		// SpringApplication.run initializes and launches the Spring Boot application
 		SpringApplication.run(ApiApplication.class, args);
 		// Output a message to the console indicating the application is running
-		System.out.println("Estoy funcionando");
+		System.out.println("Estoy funcionando v1");
 	}
 
 
