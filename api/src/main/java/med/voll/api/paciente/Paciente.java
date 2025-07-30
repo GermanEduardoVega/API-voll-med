@@ -6,7 +6,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.api.direccion.Direccion;
-import med.voll.api.medico.DatosRegistroPaciente;
 
 @Getter //metodos getter se generan en tiempo de compilacion
 @NoArgsConstructor  //constructor sin argumentos

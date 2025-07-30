@@ -1,7 +1,7 @@
 package med.voll.api.controller;
 
 import jakarta.validation.Valid;
-import med.voll.api.medico.DatosRegistroPaciente;
+import med.voll.api.paciente.DatosRegistroPaciente;
 import med.voll.api.paciente.DatosActualizacionPaciente;
 import med.voll.api.paciente.DatosListaPaciente;
 import med.voll.api.paciente.Paciente;
